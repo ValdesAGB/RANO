@@ -1,7 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import Slider from 'react-slick'
+import { DownloadElements } from '../data'
 
 function Download() {
+  const settings = {
+    infinite: true,
+    centerMode: true,
+    centerPadding: '40px',
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: false,
+  }
   const CaseBtn = styled.button`
     padding: 10px 50px 10px 50px;
     color: white;
@@ -23,8 +37,8 @@ function Download() {
     background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80');
     background-size: cover;
     background-position: center;
-    position: absolute;
-    top: 40%;
+    position: relative;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -47,7 +61,22 @@ function Download() {
   `
 
   const ImageDiv = styled.div`
+    background-color: #f7f7f8;
     position: relative;
+  `
+  const PrincipaleImage = styled.img`
+    background-colo: #f03c6f;
+  `
+
+  const SliderSlide = styled.div`
+    padding: 0 0 0 100px;
+    position: absolute;
+    top: 11.5%;
+    left: 0.27%;
+    right: 0;
+    bottom: 0%;
+    z-index: 1;
+    color: white;
   `
 
   const Icone = styled.i`
@@ -74,40 +103,64 @@ function Download() {
     <React.Fragment>
       <span className="my-5" id="download" />
       <section className="mt-3">
-        <div className="mt-5">
-          <div className="text-center">
-            <H1>19,685 download times</H1>
-            <h6 className="fw-light my-3">
-              The best Start Up for your Perfect App
-            </h6>
-            <CaseBtn className="btn">Get App Now</CaseBtn>
-          </div>
-          <ImageDiv className="text-center mt-5">
+        <div className="text-center">
+          <H1>19,685 download times</H1>
+          <h6 className="fw-light my-3">
+            The best Start Up for your Perfect App
+          </h6>
+          <CaseBtn className="btn">Get App Now</CaseBtn>
+        </div>
+        <span className="row my-5 ">
+          <ImageDiv className="text-center ">
             <img
               src="https://themesflat.co/html/rano/images/mobile.png"
               alt="3"
             />
 
-            <SubscribeDiv className="row">
-              <SubscribeSpan className="row text-white align-items-center">
-                <div className="col-8 row align-items-center ms-5">
-                  <Icone className="bi bi-lamp col-2 " />
-                  <p className="col text-start fs-2">
-                    Start <span className="fw-bold">growing up</span> your
-                    startup with Rano
-                  </p>
-                </div>
-                <div className="col text-end">
-                  <SubscribeBtn className="btn">Subscribe Now</SubscribeBtn>
-                </div>
-              </SubscribeSpan>
-              <Div></Div>
-            </SubscribeDiv>
+            <SliderSlide className="">
+              <Slider {...settings}>
+                {DownloadElements.map((item) => (
+                  <div key={item.id}>
+                    <img src={item.src} alt={item.alt} className="" />
+                  </div>
+                ))}
+              </Slider>
+            </SliderSlide>
           </ImageDiv>
-        </div>
+        </span>
+        <SubscribeDiv className="row mb-5">
+          <SubscribeSpan className="row text-white align-items-center">
+            <div className="col-8 row align-items-center ms-5">
+              <Icone className="bi bi-lamp col-2 text-center" />
+              <p className="col text-start fs-2">
+                Start <span className="fw-bold">growing up</span> your startup
+                with Rano
+              </p>
+            </div>
+            <div className="col text-end ">
+              <SubscribeBtn className="btn">Subscribe Now</SubscribeBtn>
+            </div>
+          </SubscribeSpan>
+          <Div></Div>
+        </SubscribeDiv>
       </section>
     </React.Fragment>
   )
 }
 
 export default Download
+/*  <SubscribeDiv className="row mt-5">
+          <SubscribeSpan className="row text-white align-items-center">
+            <div className="col-8 row align-items-center ms-5">
+              <Icone className="bi bi-lamp col-2 text-center" />
+              <p className="col text-start fs-2">
+                Start <span className="fw-bold">growing up</span> your startup
+                with Rano
+              </p>
+            </div>
+            <div className="col text-end">
+              <SubscribeBtn className="btn">Subscribe Now</SubscribeBtn>
+            </div>
+          </SubscribeSpan>
+          <Div></Div>
+        </SubscribeDiv>*/

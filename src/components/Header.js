@@ -20,7 +20,7 @@ function Header() {
   const Span = styled.span`
     padding: 30px 0 30px 20px;
     position: fixed;
-    background-color: ${isAtTop ? 'transparent' : 'rgba(0, 0, 0, 0.8)'};
+    background-color: ${isAtTop ? 'transparent' : 'rgba(0, 0, 0, 0.7)'};
   `
 
   const ListLink = styled.a`
@@ -47,7 +47,7 @@ function Header() {
 
   const DivHeader = styled.div`
     color: white;
-    z-index: 1;
+    z-index: 9;
     position: relative;
     top: 0;
     bottom: 0;

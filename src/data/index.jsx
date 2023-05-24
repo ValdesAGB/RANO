@@ -109,3 +109,31 @@ export const networsContact = [
     href: '',
   },
 ]
+
+export const DownloadElements = [
+  {
+    id: 1,
+    src: 'https://themesflat.co/html/rano/images/mobile-1.jpg',
+    alt: 'Image 1',
+  },
+  {
+    id: 2,
+    src: 'https://themesflat.co/html/rano/images/mobile-2.jpg',
+    alt: 'Image 2',
+  },
+  {
+    id: 3,
+    src: 'https://themesflat.co/html/rano/images/mobile-3.jpg',
+    alt: 'Image 3',
+  },
+  {
+    id: 4,
+    src: 'https://themesflat.co/html/rano/images/mobile-4.jpg',
+    alt: 'Image 4',
+  },
+  {
+    id: 5,
+    src: 'https://themesflat.co/html/rano/images/mobile-5.jpg',
+    alt: 'Image 5',
+  },
+]
