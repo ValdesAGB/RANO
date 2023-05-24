@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import 'animate.css'
 import { depositBrand, siteName } from '../data'
 
 function Home() {
@@ -73,25 +74,25 @@ function Home() {
   return (
     <React.Fragment>
       <Section className="text-center text-white">
-        <H1>
+        <H1 className="animate__animated animate__fadeInDown animate__slow">
           <span className="fw-bold">
             {siteName}
             {depositBrand()}
           </span>{' '}
           - a premium landing for App, SasS, Product online marketing...
         </H1>
-        <h5 className="mt-2">
+        <h5 className="mt-2 animate__animated animate__fadeInDown ">
           Powerful, easy to customize, amazing design components.
         </h5>
         <div className="my-5">
-          <AppleBtn className="btn">
+          <AppleBtn className="btn animate__animated animate__fadeInLeft animate__slow">
             <i className="bi bi-apple "></i> Get on Apple
           </AppleBtn>
-          <GoogleBtn className="btn">
+          <GoogleBtn className="btn animate__animated animate__fadeInRight animate__slow ">
             <i className="bi bi-android2"></i> Get on Google
           </GoogleBtn>
         </div>
-        <div>
+        <div className="animate__animated animate__fadeInUp animate__delay-1s">
           <img
             src="https://themesflat.co/html/rano/images/mobile-slide.png"
             alt="1"
