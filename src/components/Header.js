@@ -4,6 +4,11 @@ import styled from 'styled-components'
 
 function Header() {
   const [isAtTop, setIsAtTop] = useState(true)
+  const [menu, setMenu] = useState(false)
+  const menuState = (e) => {
+    e.preventDefault()
+    setMenu(!menu ? true : false)
+  }
 
   useEffect(() => {
     function handleScroll() {
@@ -17,9 +22,28 @@ function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    setTimeout(() => {
+      alert(
+        "Les images, vidéos et contenus présents sur ce site sont fictifs et servent juste d'illustraction."
+      )
+    }, 2000)
+  }, [])
+
   const Span = styled.span`
+    @media (max-width: 425px) {
+      padding: 20px 0 20px 20px;
+    }
+    @media (max-width: 767px) {
+      background-color: ${isAtTop && menu
+        ? 'rgba(0, 0, 0, 0.9)'
+        : isAtTop && !menu
+        ? 'transparent'
+        : 'rgba(0, 0, 0, 0.7)'};
+    }
     padding: 30px 0 30px 20px;
     position: fixed;
+
     background-color: ${isAtTop ? 'transparent' : 'rgba(0, 0, 0, 0.7)'};
   `
 
@@ -53,25 +77,44 @@ function Header() {
     bottom: 0;
   `
 
+  const ListDiv = styled.div`
+    @media (max-width: 768px) {
+      border-top: solid 2px white;
+      padding-top: 10px;
+    }
+  `
+  const brand = () => {
+    return (
+      <>
+        <SiteLink href="#" className="d-none d-md-block">
+          {siteName}
+          <SpanLink>.</SpanLink>
+        </SiteLink>
+        <SiteLink className="d-block d-md-none" onClick={(e) => menuState(e)}>
+          {siteName}
+          <SpanLink>.</SpanLink>
+        </SiteLink>
+      </>
+    )
+  }
   return (
     <React.Fragment>
-      <DivHeader>
-        <Span className="row align-items-center   w-100">
-          <div className="col">
-            <SiteLink href="#">
-              {siteName}
-              <SpanLink>.</SpanLink>
-            </SiteLink>
-          </div>
-          <div className="col">
-            <ul className="list-unstyled row text-center">
-              {navElement.map(({ id, title, href }) => (
-                <li key={id} className="col">
-                  <ListLink href={href}>{title}</ListLink>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <DivHeader className=" justify-content-center">
+        <Span className="row col-12 align-items-center text-center  ">
+          <div className="col-12 col-lg text-lg-start">{brand()}</div>
+          <span className="row col-lg justify-content-center ">
+            <ListDiv className=" col-lg ">
+              <span className={menu ? '' : 'd-none d-md-block'}>
+                <ul className="list-unstyled row  ">
+                  {navElement.map(({ id, title, href }) => (
+                    <li key={id} className="col my-2 my-md-0 ">
+                      <ListLink href={href}>{title}</ListLink>
+                    </li>
+                  ))}
+                </ul>
+              </span>
+            </ListDiv>
+          </span>
         </Span>
       </DivHeader>
     </React.Fragment>

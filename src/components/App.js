@@ -11,6 +11,7 @@ function App() {
   const GlobalStyle = createGlobalStyle`
   *{
     font-family : Montserrat;
+
   }
   `
   return (

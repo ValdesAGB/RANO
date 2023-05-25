@@ -23,18 +23,31 @@ function Footer() {
     color: #f03c6f;
   `
 
+  const date = new Date()
+
+  const LinkFooter = styled.a`
+    color: #f03c6f;
+    text-decoration: none;
+    font-size: 1.1em;
+  `
+
   return (
     <React.Fragment>
-      <footer className="container">
-        <div className="row">
-          <div className="col-9">
+      <footer className="container py-0 py-lg-3">
+        <div className="row align-items-center  text-center text-lg-start">
+          <div className="col-12 col-lg my-2 my-lg-0">
             <SiteLink href="#">
               {siteName}
               <SpanLink>.</SpanLink>
             </SiteLink>
           </div>
-
-          <div className="col">
+          <div className="col-12 col-lg my-2 my-lg-0">
+            <p>
+              &copy; <LinkFooter href="#">{siteName}</LinkFooter>{' '}
+              {date.getFullYear()}. All rights reserved.
+            </p>
+          </div>
+          <div className="col-12 col-lg ">
             <ul className="list-unstyled row">
               {networsContact.map(({ id, icone, href }) => (
                 <li key={id} className="col btn" title={id}>
