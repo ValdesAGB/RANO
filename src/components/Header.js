@@ -1,14 +1,73 @@
 import React, { useEffect, useState } from 'react'
-import { navElement, siteName } from '../data'
+import { navElement } from '../data'
 import styled from 'styled-components'
+import { colors } from '../untils/colors'
+import { polices } from '../untils/polices'
+
+const Container = styled.div`
+  @media (max-width: 767px) {
+    padding: 0;
+  }
+`
+
+const ContainerFluid = styled.div`
+  @media (max-width: 767px) {
+    padding: 0;
+  }
+`
+
+const Brand = styled.a`
+  @media (max-width: 767px) {
+    padding-left: 10px;
+  }
+`
+
+const ToggleBtn = styled.button`
+  @media (max-width: 767px) {
+    margin-right: 10px;
+  }
+  border: none;
+  i {
+    font-size: 2em;
+    color: white;
+  }
+`
+
+const List = styled.ul`
+  @media (max-width: 991px) {
+    background-color: #222222;
+    margin-top: 12px;
+  }
+`
+
+const NavItem = styled.li`
+  font-size: 15px;
+  padding: 0 50px;
+  line-height: 50px;
+
+  @media (max-width: 991px) {
+    border-top: 1px solid #333333;
+  }
+
+  @media (min-width: 768px) {
+    padding: 0 24px;
+  }
+`
+
+const NavLink = styled.a`
+  font-family: ${polices.tertiary};
+  color: ${(props) => (props.id === '1' ? colors.main : 'white')};
+  &:hover {
+    color: ${colors.main};
+  }
+
+  &:focus {
+    color: ${colors.main};
+  }
+`
 
 function Header() {
   const [isAtTop, setIsAtTop] = useState(true)
-  const [menu, setMenu] = useState(false)
-  const menuState = (e) => {
-    e.preventDefault()
-    setMenu(!menu ? true : false)
-  }
 
   useEffect(() => {
     function handleScroll() {
@@ -22,101 +81,61 @@ function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    setTimeout(() => {
-      alert(
-        "Les images, vidéos et contenus présents sur ce site sont fictifs et servent juste d'illustraction."
-      )
-    }, 2000)
-  }, [])
-
-  const Span = styled.span`
-    @media (max-width: 425px) {
-      padding: 20px 0 20px 20px;
-    }
-    @media (max-width: 767px) {
-      background-color: ${isAtTop && menu
-        ? 'rgba(0, 0, 0, 0.9)'
-        : isAtTop && !menu
-        ? 'transparent'
-        : 'rgba(0, 0, 0, 0.7)'};
-    }
-    padding: 30px 0 30px 20px;
+  const Navigation = styled.div`
     position: fixed;
-
-    background-color: ${isAtTop ? 'transparent' : 'rgba(0, 0, 0, 0.7)'};
-  `
-
-  const ListLink = styled.a`
-    color: white;
-    text-decoration: none;
-    transition: color 400ms;
-    &:hover {
-      color: #f03c6f;
-    }
-  `
-  const SiteLink = styled.a`
-    text-decoration: none;
-    font-size: 2em;
-    font-weight: 900;
-    color: white;
-    &:hover {
-      color: white;
-    }
-  `
-
-  const SpanLink = styled.span`
-    color: #f03c6f;
-  `
-
-  const DivHeader = styled.div`
-    color: white;
-    z-index: 9;
-    position: relative;
     top: 0;
-    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    background-color: ${isAtTop ? 'transparent' : 'rgba(0, 0, 0, 0.8)'};
+    padding: 15px 0;
   `
 
-  const ListDiv = styled.div`
-    @media (max-width: 768px) {
-      border-top: solid 2px white;
-      padding-top: 10px;
-    }
-  `
-  const brand = () => {
-    return (
-      <>
-        <SiteLink href="#" className="d-none d-md-block">
-          {siteName}
-          <SpanLink>.</SpanLink>
-        </SiteLink>
-        <SiteLink className="d-block d-md-none" onClick={(e) => menuState(e)}>
-          {siteName}
-          <SpanLink>.</SpanLink>
-        </SiteLink>
-      </>
-    )
-  }
   return (
     <React.Fragment>
-      <DivHeader className=" justify-content-center">
-        <Span className="row col-12 align-items-center text-center  ">
-          <div className="col-12 col-lg text-lg-start">{brand()}</div>
-          <span className="row col-lg justify-content-center ">
-            <ListDiv className=" col-lg ">
-              <span className={menu ? '' : 'd-none d-md-block'}>
-                <ul className="list-unstyled row  ">
-                  {navElement.map(({ id, title, href }) => (
-                    <li key={id} className="col my-2 my-md-0 ">
-                      <ListLink href={href}>{title}</ListLink>
-                    </li>
-                  ))}
-                </ul>
-              </span>
-            </ListDiv>
-          </span>
-        </Span>
-      </DivHeader>
+      <Navigation className="row">
+        <div>
+          <Container className="container">
+            <nav className="navbar navbar-expand-lg ">
+              <ContainerFluid className="container-fluid">
+                <div className="navbar-brand col-lg-4 col-xl-6">
+                  <Brand href="/">
+                    <img
+                      src="https://themesflat.co/html/rano/images/logo.png"
+                      alt="logo"
+                    />
+                  </Brand>
+                </div>
+                <ToggleBtn
+                  className="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <i className="bi bi-list" />
+                </ToggleBtn>
+                <div
+                  className="collapse navbar-collapse"
+                  id="navbarSupportedContent"
+                >
+                  <List className="navbar-nav me-auto mb-2 mb-lg-0">
+                    {navElement.map(({ id, title, href }) => (
+                      <NavItem className="nav-item" key={id}>
+                        <NavLink id={id} className="nav-link" href={href}>
+                          {title}
+                        </NavLink>
+                      </NavItem>
+                    ))}
+                  </List>
+                </div>
+              </ContainerFluid>
+            </nav>
+          </Container>
+        </div>
+      </Navigation>
     </React.Fragment>
   )
 }

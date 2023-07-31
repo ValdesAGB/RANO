@@ -1,67 +1,114 @@
 import React from 'react'
 import { featureElements } from '../data'
 import styled from 'styled-components'
+import { polices } from '../untils/polices'
 
+const bgImage = 'https://themesflat.co/html/rano/images/big-feature-bg.png'
+
+const FeaturesSection = styled.section`
+  background: url(${bgImage}) no-repeat center center / cover;
+  color: white;
+  @media (max-width: 991px) {
+    padding: 80px 0;
+  }
+`
+
+const Container = styled.div`
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+`
+const CoverContainer = styled.div`
+  position: relative;
+  top: -5rem;
+  margin-bottom: 30px;
+  @media (min-width: 576px) {
+    margin-bottom: 0px;
+    top: -5rem;
+  }
+`
+const Cover = styled.img`
+  width: 100%;
+`
+const Content = styled.div`
+  @media (min-width: 991px) {
+    padding-top: 243px;
+  }
+`
+
+const TitleContainer = styled.div`
+  margin-bottom: 64px;
+  h1 {
+    font-size: 46px;
+    font-weight: 400;
+    padding-bottom: 32px;
+  }
+`
+
+const Underline = styled.div`
+  background-color: white;
+  padding: 0.5px;
+`
+
+const Information = styled.div`
+  margin-bottom: 1rem;
+  cursor: pointer;
+`
+
+const Icone = styled.i`
+  font-size: 4em;
+  text-align: center;
+
+  transition: transform 0.8s;
+  ${Information}:hover & {
+    transform: scale(0.85);
+  }
+`
+
+const Title = styled.h5`
+  font-size: 22px;
+  font-weight: normal;
+  font-family: ${polices.second};
+`
+
+const Paragraph = styled.p`
+  font-size: 0.95em;
+`
 function Features() {
-  const Section = styled.section`
-    @media (max-width: 425px) {
-      border-radius: 100% 0% 100% 0% / 27% 100% 0% 73%;
-    }
-
-    @media (min-width: 768px) {
-      border-radius: 0;
-    }
-
-    @media (min-width: 1024px) {
-      border-radius: 100% 0% 0% 100% / 44% 0% 100% 56%;
-    }
-
-    border-radius: 100% 0% 0% 100% / 44% 0% 100% 56%;
-    background: linear-gradient(to right, #dd3e78, #df4276);
-    color: white;
-  `
-
-  const Icone = styled.i`
-    font-size: 4em;
-  `
   return (
     <React.Fragment>
-      <span className="my-3 my-lg-5" id="features" />
-      <Section className="my-5 my-lg-0">
-        <div className="row align-items-center py-md-5 py-0">
-          <div className="col-md ">
-            <img
-              src="https://themesflat.co/html/rano/images/home-03.png"
-              alt="2"
-              className="w-100"
-            />
-          </div>
+      <FeaturesSection id="features">
+        <Container className="container">
+          <div className="row">
+            <CoverContainer className="col-lg">
+              <Cover
+                src="https://themesflat.co/html/rano/images/home-03.png"
+                alt="mobile-application-cover-3"
+              />
+            </CoverContainer>
 
-          <div className="col-md mt-5 mt-md-0">
-            <div>
-              <h1 className="mb-3">Where it all 'appens.</h1>
-              <div
-                className="mb-0 mb-md-5 col-5 col-md-3 col-lg-2"
-                style={{ backgroundColor: 'white', padding: '0.5px' }}
-              ></div>
-            </div>
-            <div>
-              {featureElements.map(({ id, icone, title }) => (
-                <span key={id} className="row my-4 align-items-center ">
-                  <Icone className={`bi ${icone} col-3 col-lg-2 text-center`} />
-                  <div className="col col-lg-7">
-                    <h5>{title}</h5>
-                    <p className="fw-light">
-                      Automatically transform your latest footage into an
-                      awesome video with music and effects.
-                    </p>
-                  </div>
-                </span>
-              ))}
-            </div>
+            <Content className="col-lg">
+              <TitleContainer>
+                <h1>Where it all 'appens.</h1>
+                <Underline className="col-3 col-md-3 col-lg-2" />
+              </TitleContainer>
+              <div>
+                {featureElements.map(({ id, icone, title }) => (
+                  <Information key={id} className="row align-items-center">
+                    <Icone className={`bi ${icone} col-3 col-lg-2`} />
+                    <div className="col col-lg-10 col-xxl-7">
+                      <Title>{title}</Title>
+                      <Paragraph>
+                        Automatically transform your latest footage into an
+                        awesome video with music and effects.
+                      </Paragraph>
+                    </div>
+                  </Information>
+                ))}
+              </div>
+            </Content>
           </div>
-        </div>
-      </Section>
+        </Container>
+      </FeaturesSection>
     </React.Fragment>
   )
 }

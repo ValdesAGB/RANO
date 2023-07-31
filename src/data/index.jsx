@@ -31,6 +31,20 @@ export const navElement = [
   },
 ]
 
+export const statsElements = [
+  {
+    id: '1',
+    number: '25k+',
+    text: 'Vote for Design',
+  },
+
+  {
+    id: '2',
+    number: 17501,
+    text: 'Daily website visit',
+  },
+]
+
 export const featureElements = [
   {
     id: '1',
@@ -71,13 +85,13 @@ export const testimony = [
     id: '2',
     name: 'Etienne Castro',
     poste: 'DVDA Microsoft',
-    cover: 'https://themesflat.co/html/rano/images/testimonial.png',
+    cover: 'http://landing.zytheme.com/legal/assets/images/testimonial/3.png',
   },
   {
     id: '3',
     name: 'Pierre Grégoire',
     poste: 'Agent point',
-    cover: '',
+    cover: 'http://landing.zytheme.com/legal/assets/images/testimonial/1.png',
   },
 ]
 

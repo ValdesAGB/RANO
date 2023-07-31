@@ -1,64 +1,54 @@
 import React from 'react'
-import { networsContact, siteName } from '../data'
 import styled from 'styled-components'
+import Networks from './Networks'
+import Copyright from './Copyright'
+
+const Container = styled.div`
+  @media (max-width: 991px) {
+    text-align: center !important;
+    padding: 30px 0 25px;
+    margin: 0;
+  }
+  padding: 47px 0;
+`
+
+const SiteLink = styled.a`
+  text-decoration: none;
+  font-size: 2em;
+  font-weight: 900;
+  color: black;
+`
+
+const RightDiv = styled.div`
+  @media (max-width: 991px) {
+    margin: 20px auto;
+  }
+`
 
 function Footer() {
-  const ListLink = styled.a`
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 1.2em;
-    text-decoration: none;
-    transition: color 400ms;
-    &:hover {
-      color: #f03c6f;
-    }
-  `
-  const SiteLink = styled.a`
-    text-decoration: none;
-    font-size: 2em;
-    font-weight: 900;
-    color: black;
-  `
-
-  const SpanLink = styled.span`
-    color: #f03c6f;
-  `
-
-  const date = new Date()
-
-  const LinkFooter = styled.a`
-    color: #f03c6f;
-    text-decoration: none;
-    font-size: 1.1em;
-  `
-
   return (
     <React.Fragment>
-      <footer className="container py-0 py-lg-3">
-        <div className="row align-items-center  text-center text-lg-start">
-          <div className="col-12 col-lg my-2 my-lg-0">
-            <SiteLink href="#">
-              {siteName}
-              <SpanLink>.</SpanLink>
-            </SiteLink>
+      <footer className="row">
+        <Container>
+          <div className="container">
+            <div className="row justify-content-center align-items-center">
+              <div className="col-12 col-lg-4">
+                <SiteLink href="#">
+                  <img
+                    src="https://themesflat.co/html/rano/images/logo-black.png"
+                    alt="cover"
+                  />
+                </SiteLink>
+              </div>
+              <RightDiv className="col-12 col-lg-4">
+                <Copyright />
+              </RightDiv>
+              <div className="col-12 col-lg-4">
+                <Networks />
+              </div>
+            </div>
           </div>
-          <div className="col-12 col-lg my-2 my-lg-0">
-            <p>
-              &copy; <LinkFooter href="#">{siteName}</LinkFooter>{' '}
-              {date.getFullYear()}. All rights reserved.
-            </p>
-          </div>
-          <div className="col-12 col-lg ">
-            <ul className="list-unstyled row">
-              {networsContact.map(({ id, icone, href }) => (
-                <li key={id} className="col btn" title={id}>
-                  <ListLink href="#">
-                    <i className={`bi ${icone}`} />
-                  </ListLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        </Container>
       </footer>
     </React.Fragment>
   )
